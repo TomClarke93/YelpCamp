@@ -1,0 +1,22 @@
+{
+  "name": "yelpcamp",
+  "version": "1.0.0",
+  "description": "Created as part of The Web Developer Bootcamp 2021 by Colt Steele on Udemy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TomClarke93/YelpCamp.git"
+  },
+  "author": "Tom Clarke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TomClarke93/YelpCamp/issues"
+  },
+  "homepage": "https://github.com/TomClarke93/YelpCamp#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
