@@ -47,6 +47,21 @@ app.get('/campgrounds/:id', async (req, res) => {
     res.render('campgrounds/show', {campground: foundCampground});
 })
 
+app.get('/campgrounds/:id/edit', async (req, res) => {
+    const {id} = req.params;
+    const foundCampground = await Campground.findById(id);
+    res.render('campgrounds/edit', {campground: foundCampground});
+})
+
+app.put('/campgrounds/:id', async (req, res) => {
+    const {id} = req.params;
+    const foundCampground = await Campground.findById(id);
+    foundCampground.title = req.body.campground.title;
+    foundCampground.location = req.body.campground.location;
+    await foundCampground.save();
+    res.redirect(`/campgrounds/${foundCampground._id}`);
+})
+
 app.listen(3000, () => {
     console.log("Server Started");
     console.log("Listening on port 3000");
