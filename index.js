@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/yelp-camp', {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify: false
 });
 
 const db = mongoose.connection;
@@ -55,10 +56,7 @@ app.get('/campgrounds/:id/edit', async (req, res) => {
 
 app.put('/campgrounds/:id', async (req, res) => {
     const {id} = req.params;
-    const foundCampground = await Campground.findById(id);
-    foundCampground.title = req.body.campground.title;
-    foundCampground.location = req.body.campground.location;
-    await foundCampground.save();
+    const foundCampground = await Campground.findByIdAndUpdate(id, {...req.body.campground})
     res.redirect(`/campgrounds/${foundCampground._id}`);
 })
 
