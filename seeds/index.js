@@ -26,12 +26,19 @@ const getCity = () => {
     return `${randomCity.city}, ${randomCity.state}`;
 }
 
+const getPrice= () => {
+    return Math.floor(Math.random() * 20) + 10
+}
+
 const seedDatabase = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 100; i++){
         const newCampground = new Campground({
             title: generateTitles(seedHelpers.descriptors, seedHelpers.places),
-            location: getCity()
+            location: getCity(),
+            image: 'https://source.unsplash.com/collection/483251',
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto consequuntur modi at dolorum, quos aut similique quia nihil ratione ad est numquam repellendus? Iusto nesciunt nulla, labore iste fuga ab.',
+            price: getPrice()
         });
         await newCampground.save();
     }
