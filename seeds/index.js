@@ -34,6 +34,7 @@ const seedDatabase = async () => {
     await Campground.deleteMany({});
     for (let i = 0; i < 100; i++){
         const newCampground = new Campground({
+            author: '60d899ad87b0973a907d7b74',
             title: generateTitles(seedHelpers.descriptors, seedHelpers.places),
             location: getCity(),
             image: 'https://source.unsplash.com/collection/483251',
